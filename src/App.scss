@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--secondary-color);
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.search {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #fff;
+  &::placeholder {
+    color: #7378c5;
+  }
+  &:focus {
+    background: var(--primary-color);
+    outline: none;
+  }
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.movie {
+  position: relative;
+  margin: 1rem;
+  width: 300px;
+  background: var(--secondary-color);
+  border-radius: 3px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  &-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem 1rem;
+    color: #eee;
+    letter-spacing: 0.5px;
+    span {
+      padding: 0.25rem 0.5rem;
+      background: var(--primary-color);
+      border-radius: 3px;
+      font-weight: bold;
+      &.green {
+        color: lightgreen;
+      }
+      &.orange {
+        color: orange;
+      }
+      &.red {
+        color: red;
+      }
+    }
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem;
+  max-height: 100%;
+  background: #fff;
+  transform: translateY(101%);
+  transition: transform 0.3s ease-out;
+  overflow-y: auto;
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
 }
